@@ -8,7 +8,7 @@ import { logout } from "./userActions";
 export const listProduct = (keyword="",pageNumber="") => async(dispatch) =>{
     try {
         dispatch({type:PRODUCT_LIST_REQUEST})
-        const {data} = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
+        const {data} = await axios.get(`https://salepost.onrender.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
         dispatch({type:PRODUCT_LIST_SUCCESS,
             payload: data
         });
@@ -32,7 +32,7 @@ export const listProduct = (keyword="",pageNumber="") => async(dispatch) =>{
 export const listProductDetails = (id) => async(dispatch) =>{
     try {
         dispatch({type:PRODUCT_DETAILS_REQUEST})
-        const {data} = await axios.get(` /api/products/${id}`);
+        const {data} = await axios.get(` https://salepost.onrender.com/api/products/${id}`);
         dispatch({type:PRODUCT_DETAILS_SUCCESS,
             payload: data
         });
@@ -72,7 +72,7 @@ export const listProductDetails = (id) => async(dispatch) =>{
         body: JSON.stringify(userInfo),
       };
   
-      const {data} = await axios.put(` api/products/${product._id}`,product, config);
+      const {data} = await axios.put(` https://salepost.onrender.com/api/products/${product._id}`,product, config);
       dispatch({ type: FPRODUCT_UPDATE_SUCCESS,payload:data}); 
   
     } catch (error) {
@@ -108,7 +108,7 @@ export const listProductDetails = (id) => async(dispatch) =>{
         body: JSON.stringify(userInfo),
       };
   
-      const {data} = await axios.put(`/api/products/${product._id}`,product, config);
+      const {data} = await axios.put(`https://salepost.onrender.com/api/products/${product._id}`,product, config);
       dispatch({ type: PRODUCT_UPDATE_SUCCESS,payload:data}); 
   
     } catch (error) {
